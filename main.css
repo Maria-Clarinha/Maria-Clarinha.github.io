@@ -1,0 +1,74 @@
+#meuVideoFundo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1000;
+}
+ .content {
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: rgb(48, 173, 223);
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+ }
+
+ h1, h2, h3, p{
+     text-align: center;
+     color: rgb(145, 200, 40);
+ }
+
+ #jogo {
+    width: 600px;
+    height: 300px;
+    border: 4px solid rgb(170, 25, 175);
+    margin: auto;
+    background-image: url("https://t4.ftcdn.net/jpg/01/46/03/31/360_F_146033193_K3poVK6PmEHrepqbZD2gwfmm6ma0XAdh.webp");
+    background-size: cover;    
+    animation: paisagem 1.33s infinite;
+}
+
+#personagem {
+    height: 75px;
+    width: 75px;    
+    position: relative;
+    top: 225px;  /* posição relativa ao fundo: jogo.height - personagem.height*/
+    background-image: url("https://cdn140.picsart.com/319033380165211.png?type=webp&to=min&r=640");
+    background-size: cover;
+}
+
+#obstaculo {
+    height: 50px;
+    width: 50px;    
+    position: relative;
+    left: 550px; /* jogo.width - obstaculo.width */
+    top: 175px;  /* posição relativa ao personagem: personagem.top - obstaculo.height */
+    background-image: url("https://lh3.googleusercontent.com/proxy/rPYNSaC0DPuZBDB-f1e6LUmUGXfGg1Yi8ZkP9IkbtanqfkKY2C3yGrFkJ4kF9CIP8-yyMRVTRxRJMips3L3WzAqQN6vpZJ0b");
+    background-size: cover;    
+    animation: obstaculo 1.33s infinite;
+}
+
+.anima-pulo {
+    animation: pulo 0.5s;
+}
+
+@keyframes paisagem {
+    0%{left: 0px;}
+    100%{left: -300px;} 
+}
+
+@keyframes obstaculo {
+    0%{left: 550px;}
+    100%{left: -50px;}
+}
+
+@keyframes pulo {
+    0%{top: 225px;}
+    50%{top: 75px;}
+    75%{top: 75px;}
+    100%{top: 225px;}
+}
