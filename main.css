@@ -50,16 +50,15 @@
     /*background-image: url("https://lh3.googleusercontent.com/proxy/rPYNSaC0DPuZBDB-f1e6LUmUGXfGg1Yi8ZkP9IkbtanqfkKY2C3yGrFkJ4kF9CIP8-yyMRVTRxRJMips3L3WzAqQN6vpZJ0b");*/
     background-image: url("rock.png");
     background-size: cover;    
-    animation: obstaculo 1.33s infinite;
+    /*animation: obstaculo 1.33s infinite;*/
 }
 
 .anima-pulo {
     animation: pulo 0.5s;
 }
 
-@keyframes paisagem {
-    0%{left: 0px;}
-    100%{left: -300px;} 
+.anima-obstaculo {
+    animation: obstaculo 1.33s infinite;
 }
 
 @keyframes obstaculo {

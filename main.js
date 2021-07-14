@@ -1,8 +1,9 @@
-const personagem = document.getElementById('personagem')
-const obstaculo = document.getElementById('obstaculo')
-const placar = document.getElementById('placar')
+const personagem = document.getElementById('personagem');
+const obstaculo = document.getElementById('obstaculo');
+const placar = document.getElementById('placar');
+var jogando = false;
 
-function pulo() {
+function Pular() {
     personagem.classList.add('anima-pulo')
     setTimeout(() => {
         personagem.classList.remove('anima-pulo')
@@ -11,30 +12,44 @@ function pulo() {
 
 document.addEventListener('keypress', () => {
     if (!personagem.classList.contains('anima-pulo')) {
-        pulo();
+        Pular();
     }    
 });
 
-setInterval(() => {
+function IniciarJogo() {
 
-    placar.innerText++;
+    if(!jogando) {
 
-    const personagemTop = parseInt(window.getComputedStyle(personagem)
-        .getPropertyValue('top'));
+        obstaculo.classList.add('anima-obstaculo')
 
-    const obstaculoLeft = parseInt(window.getComputedStyle(obstaculo)
-        .getPropertyValue('left'));
+        jogando = setInterval(() => {            
 
-    if (obstaculoLeft < 0) {
-        obstaculo.style.display = 'none';
-    } else {
-        obstaculo.style.display = '';
-    }
+            placar.innerText++;
+        
+            const personagemTop = parseInt(window.getComputedStyle(personagem)
+                .getPropertyValue('top'));
+        
+            const obstaculoLeft = parseInt(window.getComputedStyle(obstaculo)
+                .getPropertyValue('left'));
+        
+            if (obstaculoLeft < 0) {
+                obstaculo.style.display = 'none';
+            } else {
+                obstaculo.style.display = '';
+            }
+        
+            if (obstaculoLeft < 50 && obstaculoLeft > 0 && personagemTop > 150) {                
 
-    if (obstaculoLeft < 50 && obstaculoLeft > 0 && personagemTop > 150) {
-        alert("A sua pontuação foi de: " + placar.innerText + 
-        "\n\nQuer jogar outra vez?");
+                jogando = false;
+                clearInterval(jogando)
+                obstaculo.classList.remove('anima-obstaculo')
 
-        location.reload();
-    }
-}, 50);
+                alert("A sua pontuação foi de: " + (placar.innerText-1));
+
+                location.reload();
+            }
+        }, 50);
+    }    
+}
+
+
